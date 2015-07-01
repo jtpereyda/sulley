@@ -1102,12 +1102,19 @@ class web_interface_handler (BaseHTTPServer.BaseHTTPRequestHandler):
                 current_name = "[N/A]"
 
             # render sweet progress bars.
-            progress_current     = float(self.session.fuzz_node.mutant_index) / float(self.session.fuzz_node.num_mutations())
+            try:
+                progress_current =\
+                    float(self.session.fuzz_node.mutant_index) / float(self.session.fuzz_node.num_mutations())
+            except ZeroDivisionError:
+                progress_current = 1.0
             num_bars             = int(progress_current * 50)
             progress_current_bar = "[" + "=" * num_bars + "&nbsp;" * (50 - num_bars) + "]"
             progress_current     = "%.3f%%" % (progress_current * 100)
 
-            progress_total       = float(self.session.total_mutant_index) / float(self.session.total_num_mutations)
+            try:
+                progress_total   = float(self.session.total_mutant_index) / float(self.session.total_num_mutations)
+            except ZeroDivisionError:
+                progress_total = 1.0
             num_bars             = int(progress_total * 50)
             progress_total_bar   = "[" + "=" * num_bars + "&nbsp;" * (50 - num_bars) + "]"
             progress_total       = "%.3f%%" % (progress_total * 100)
