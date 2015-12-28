@@ -1,3 +1,8 @@
+# boofuzz
+This Sulley fork has been superseded by [boofuzz](https://github.com/jtpereyda/boofuzz).
+New features and patches will be pushed there.
+Please open any pull requests on the new repository.
+
 # What?
 Sulley is an actively developed fuzzing engine and fuzz testing framework consisting of multiple extensible components.
 Sulley (IMHO) exceeds the capabilities of most previously published fuzzing technologies, commercial and public domain.
